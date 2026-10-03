@@ -9,178 +9,206 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#0068b7; --deep:#06264a; --sky:#e8f5ff; --aqua:#2ec5ff; --yellow:#ffd23f; --pink:#ff5d8f;
-  --ink:#10233d; --muted:#5b6f86; --card:#fff; --bg:#f6fbff;
+  --blue:#0068b7; --blue2:#0079be; --deep:#06264a; --sky:#e8f5ff; --aqua:#2ec5ff; --yellow:#ffd23f; --pink:#d6245c;
+  --wa:#0d7f3a; --ink:#10233d; --muted:#475a70; --card:#fff; --bg:#f6fbff;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --lift:0 14px 30px -12px rgb(6 38 74 / .28);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.55}
-h1,h2,h3,.fun{font-family:Fredoka,sans-serif;line-height:1.1}
+html{scroll-behavior:smooth;scrollbar-color:var(--blue) var(--sky);accent-color:var(--blue)}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.55;caret-color:var(--blue)}
+::selection{background:var(--yellow);color:var(--deep)}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:Fredoka,sans-serif;line-height:1.1;text-wrap:balance}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
+.ico{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.num{font-variant-numeric:tabular-nums}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;background:var(--yellow);color:var(--deep);box-shadow:0 6px 0 #d9a800;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 #d9a800}
-.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #d9a800}
-.btn.ghost{background:#fff;box-shadow:0 6px 0 #b9d6ee}
-.btn.wa{background:#25d366;color:#fff;box-shadow:0 6px 0 #179c49}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;background:var(--yellow);color:var(--deep);box-shadow:0 10px 22px -8px rgb(217 168 0 / .7);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 28px -10px rgb(217 168 0 / .8)}
+.btn:active{transform:translateY(1px);box-shadow:0 4px 10px -4px rgb(217 168 0 / .7)}
+.btn.ghost{background:#fff;box-shadow:var(--lift)}
+.btn.wa{background:var(--wa);color:#fff;box-shadow:0 10px 22px -8px rgb(13 127 58 / .6)}
+.btn .ico{font-size:1.1em}
 
 /* NAV */
 nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
-nav.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:0 2px 20px #0001}
+nav.solid{background:rgb(255 255 255 / .94);backdrop-filter:blur(10px);box-shadow:0 6px 20px -12px rgb(6 38 74 / .25)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 nav img{height:34px}
 nav ul{display:flex;gap:22px;list-style:none;font-weight:600;font-size:.92rem}
-nav ul a:hover{color:var(--blue)}
+nav ul a{text-underline-offset:6px;text-decoration-thickness:2px}
+nav ul a:hover{color:var(--blue);text-decoration:underline}
 
-/* HERO */
+/* HERO — the one authored moment */
 .hero{position:relative;min-height:100vh;display:grid;place-items:center;padding:110px 0 80px;background:radial-gradient(circle at 80% 20%,#bfe7ff 0,transparent 45%),linear-gradient(160deg,#e3f4ff,#fff 60%);overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.tag{display:inline-block;background:var(--pink);color:#fff;font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px;transform:rotate(-3deg);animation:wiggle 2.5s ease-in-out infinite}
+.tag{display:inline-block;background:var(--pink);color:#fff;font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px;transform:rotate(-3deg)}
 .hero h1{font-size:clamp(2.4rem,5.5vw,4.6rem);margin:18px 0;color:var(--deep)}
+.hero h1 .line{display:block;animation:lineUp 1.1s var(--ease) both}
+.hero h1 .line+.line{animation-delay:.15s}
 .hero h1 .hl{color:var(--blue);position:relative;white-space:nowrap}
-.hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:14px;background:var(--yellow);z-index:-1;border-radius:6px;transform-origin:left;animation:grow 1s .6s both}
-.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:28px}
-.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
-.price-bubble{position:absolute;top:8%;right:2%;width:130px;height:130px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;text-align:center;font-family:Fredoka;font-weight:700;color:var(--deep);box-shadow:0 10px 30px #ffd23f88;animation:spin-bob 6s ease-in-out infinite;z-index:3}
+.hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:14px;background:var(--yellow);z-index:-1;border-radius:6px;transform-origin:left;animation:grow .9s .7s var(--ease) both}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:28px;animation:fadeUp .9s .35s var(--ease) both}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .9s .5s var(--ease) both}
+.proof{margin-top:30px;font-size:.88rem;color:var(--muted);animation:fadeUp .9s .65s var(--ease) both}
+.proof b{color:var(--deep);font-family:Fredoka;font-size:1.05em}
+.proof i{font-style:normal;color:var(--muted);margin:0 8px}
+.price-bubble{position:absolute;top:8%;right:2%;width:130px;height:130px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;text-align:center;font-family:Fredoka;font-weight:700;color:var(--deep);box-shadow:0 18px 30px -12px rgb(217 168 0 / .7);animation:pop .8s 1s var(--ease) both,spin-bob 6s 1.8s ease-in-out infinite;z-index:3}
 .price-bubble b{font-size:2.3rem;display:block;line-height:1}
 .hero-art{position:relative}
-.hero-art .main{width:min(380px,90%);margin:auto;filter:drop-shadow(0 30px 30px #0068b744);animation:float 4s ease-in-out infinite}
-.hero-art .side{position:absolute;width:30%;bottom:0;filter:drop-shadow(0 20px 20px #0003)}
-.hero-art .side.l{left:-4%;animation:float 5s .5s ease-in-out infinite}
-.hero-art .side.r{right:-4%;animation:float 4.5s 1s ease-in-out infinite}
-.trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
-.trust div{font-size:.85rem;color:var(--muted)}
-.trust b{display:block;font-family:Fredoka;font-size:1.7rem;color:var(--blue)}
+.hero-art img{animation:arrive 1.2s var(--ease) both}
+.hero-art .main{width:min(380px,90%);margin:auto;filter:drop-shadow(0 30px 30px rgb(0 104 183 / .27))}
+.hero-art .side{position:absolute;width:30%;bottom:0;filter:drop-shadow(0 20px 20px rgb(0 0 0 / .18))}
+.hero-art .side.l{left:-4%;animation-delay:.25s}
+.hero-art .side.r{right:-4%;animation-delay:.4s}
+.hero-art .bob{animation:float 4s 1.3s ease-in-out infinite}
 
 /* bubbles */
 .bubbles span{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#9fdcff55 60%,#2ec5ff22);border:1px solid #ffffff99;animation:rise linear infinite;pointer-events:none}
 
 /* MARQUEE */
 .marquee{background:var(--deep);color:#fff;overflow:hidden;padding:14px 0;transform:rotate(-1.5deg);margin:-20px -10px 0;position:relative;z-index:4}
-.marquee div{display:flex;gap:40px;width:max-content;animation:scroll 28s linear infinite;font-family:Fredoka;font-size:1.15rem;white-space:nowrap}
-.marquee span::after{content:"💧";margin-left:40px}
+.marquee div{display:flex;align-items:center;gap:28px;width:max-content;animation:scroll 28s linear infinite;font-family:Fredoka;font-size:1.15rem;white-space:nowrap}
+.marquee .ico{color:var(--aqua)}
 
-section{padding:90px 0}
-.sec-head{text-align:center;max-width:680px;margin:0 auto 50px}
-.sec-head small{color:var(--pink);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
-.sec-head h2{font-size:clamp(2rem,4vw,3rem);margin:10px 0;color:var(--deep)}
+section{padding:96px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 48px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px;color:var(--deep)}
 .sec-head p{color:var(--muted)}
 
 /* PROMO BANNER */
 .promo{padding-top:70px}
-.promo img{border-radius:24px;box-shadow:0 20px 50px #0068b733}
+.promo img{border-radius:24px;box-shadow:0 30px 50px -24px rgb(0 104 183 / .4)}
 
-/* PERKS */
-.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.perk{background:#fff;border-radius:24px;padding:30px;box-shadow:0 10px 30px #0068b714;position:relative;overflow:hidden;transition:transform .3s}
-.perk:hover{transform:translateY(-6px) rotate(-1deg)}
-.perk .ic{font-size:2.6rem;display:inline-block;animation:bob 3s ease-in-out infinite}
-.perk h3{font-size:1.4rem;margin:12px 0 8px;color:var(--deep)}
-.perk p{color:var(--muted);font-size:.95rem}
-.perk .big{position:absolute;right:-10px;bottom:-30px;font-family:Fredoka;font-size:7rem;color:var(--sky);z-index:0}
+/* PERKS — bento, not three equal cards */
+.perks{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:auto auto;gap:20px}
+.perk{background:#fff;border-radius:26px;padding:30px;box-shadow:var(--lift);position:relative;overflow:hidden;transition:transform .35s var(--ease)}
+.perk:hover{transform:translateY(-4px)}
+.perk.hero-perk{grid-row:span 2;background:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:340px}
+.perk.hero-perk p{color:#fff}
+.perk.hero-perk .big{color:rgb(255 255 255 / .1);font-size:13rem;right:-14px;top:-40px;bottom:auto}
+.perk h3{display:flex;align-items:center;gap:10px;font-size:1.45rem;margin:0 0 8px;color:inherit}
+.perk h3 .ico{font-size:1.15em;color:var(--blue)}
+.perk.hero-perk h3{font-size:2rem}
+.perk.hero-perk h3 .ico{color:var(--yellow)}
+.perk:not(.hero-perk) h3{color:var(--deep)}
+.perk p{color:var(--muted);font-size:.95rem;max-width:42ch}
+.perk .big{position:absolute;right:-10px;bottom:-30px;font-family:Fredoka;font-size:7rem;color:var(--sky);z-index:0;pointer-events:none}
 .perk>*{position:relative;z-index:1}
 
 /* TEMP SWITCH */
-.temp{background:linear-gradient(135deg,var(--blue),#00a3e8);color:#fff;border-radius:36px;padding:50px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;position:relative}
+.temp{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:36px;padding:50px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;position:relative}
 .temp h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:14px}
-.temp p{opacity:.9}
+.temp p{color:#fff}
 .taps{display:flex;gap:10px;margin:24px 0;flex-wrap:wrap}
-.taps button{font:600 .95rem "Plus Jakarta Sans";border:2px solid #fff6;background:#ffffff1a;color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer;transition:.2s}
+.taps button{display:inline-flex;align-items:center;gap:7px;font:600 .95rem "Plus Jakarta Sans";border:2px solid rgb(255 255 255 / .4);background:rgb(255 255 255 / .1);color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer;transition:transform .25s var(--ease),background .2s,color .2s}
+.taps button:hover{background:rgb(255 255 255 / .2)}
 .taps button.on{background:#fff;color:var(--blue);transform:scale(1.06)}
-.glass{position:relative;width:180px;height:240px;margin:auto;border:5px solid #fff;border-top:none;border-radius:0 0 30px 30px;overflow:hidden;background:#ffffff14}
+.glass{position:relative;width:180px;height:240px;margin:auto;border:5px solid #fff;border-top:none;border-radius:0 0 30px 30px;overflow:hidden;background:rgb(255 255 255 / .08)}
 .glass .water{position:absolute;inset:auto 0 0;height:75%;background:var(--c,#7fd8ff);transition:background .5s}
 .glass .water::before{content:"";position:absolute;top:-14px;left:-50%;width:200%;height:28px;background:var(--c,#7fd8ff);border-radius:45%;animation:wave 3s linear infinite;transition:background .5s}
-.glass-emoji{text-align:center;font-size:3rem;margin-top:12px;transition:transform .3s}
+.glass-ico{display:block;margin:14px auto 0;font-size:2.6rem;color:#fff}
 #tempMsg{font-family:Fredoka;font-size:1.25rem;min-height:3em;margin-top:6px}
 
 /* PRODUCTS */
 .filters{display:flex;justify-content:center;gap:10px;margin-bottom:36px;flex-wrap:wrap}
-.filters button{font:600 .9rem "Plus Jakarta Sans";border:none;background:#fff;color:var(--deep);padding:10px 20px;border-radius:999px;cursor:pointer;box-shadow:0 4px 14px #0068b71a;transition:.2s}
+.filters button{display:inline-flex;align-items:center;gap:7px;font:600 .9rem "Plus Jakarta Sans";border:none;background:#fff;color:var(--deep);padding:10px 20px;border-radius:999px;cursor:pointer;box-shadow:0 6px 14px -8px rgb(0 104 183 / .35);transition:background .2s,color .2s}
+.filters button:hover{background:var(--sky)}
 .filters button.on{background:var(--deep);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
-.card{background:var(--card);border-radius:26px;padding:22px;position:relative;box-shadow:0 10px 30px #0068b714;transition:transform .35s cubic-bezier(.2,.9,.3,1.4),box-shadow .3s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-10px);box-shadow:0 24px 50px #0068b72a}
+.card{background:var(--card);border-radius:26px;padding:22px;position:relative;box-shadow:var(--lift);transition:transform .4s var(--ease),box-shadow .4s var(--ease);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);box-shadow:0 28px 44px -18px rgb(0 104 183 / .35)}
 .card .pic{background:radial-gradient(circle,#e3f4ff 0,#fff 70%);border-radius:20px;height:220px;display:grid;place-items:center;margin-bottom:16px;overflow:hidden}
-.card .pic img{height:200px;width:auto;transition:transform .5s}
-.card:hover .pic img{transform:scale(1.08) rotate(-3deg)}
+.card .pic img{height:200px;width:auto;aspect-ratio:3/5;object-fit:contain;transition:transform .6s var(--ease)}
+.card:hover .pic img{transform:scale(1.07) rotate(-3deg)}
 .card .badge{position:absolute;top:16px;left:16px;background:var(--pink);color:#fff;font-size:.72rem;font-weight:700;padding:5px 11px;border-radius:999px;z-index:2}
 .card .badge.y{background:var(--yellow);color:var(--deep)}
 .card h3{font-size:1.45rem;color:var(--deep)}
 .card .sub{color:var(--blue);font-weight:600;font-size:.88rem}
 .card .joke{color:var(--muted);font-size:.88rem;margin:8px 0 14px;flex:1}
-.card .price{font-family:Fredoka;font-size:2.1rem;color:var(--deep)}
+.card .price{font-family:Fredoka;font-size:2.1rem;color:var(--deep);font-variant-numeric:tabular-nums}
 .card .price small{font-size:.9rem;color:var(--muted)}
 .card .act{display:flex;gap:8px;margin-top:14px}
-.card .act a{flex:1;text-align:center;padding:11px;border-radius:14px;font-weight:700;font-size:.85rem;transition:.2s}
+.card .act a{flex:1;text-align:center;padding:11px;border-radius:14px;font-weight:700;font-size:.85rem;transition:transform .25s var(--ease),background .2s}
 .card .act a:first-child{background:var(--sky);color:var(--blue)}
+.card .act a:first-child:hover{background:#d3ebfd}
 .card .act a:last-child{background:var(--deep);color:#fff}
-.card .act a:hover{transform:scale(1.05)}
+.card .act a:last-child:hover{background:var(--blue)}
 .card.hide{display:none}
 
 /* WHY */
 .why{background:var(--deep);color:#fff;border-radius:40px 40px 0 0}
 .why .sec-head h2{color:#fff}.why .sec-head p{color:#b7cde3}
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.why-item{border-radius:22px;overflow:hidden;background:#0d3462;transition:transform .3s}
+.why-item{border-radius:22px;overflow:hidden;background:#0d3462;transition:transform .35s var(--ease)}
 .why-item:hover{transform:translateY(-6px)}
-.why-item img{height:170px;width:100%;object-fit:cover;transition:transform .6s}
-.why-item:hover img{transform:scale(1.1)}
+.why-item img{height:170px;width:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.why-item:hover img{transform:scale(1.08)}
 .why-item div{padding:20px}
 .why-item h3{font-size:1.2rem;color:var(--yellow);margin-bottom:8px}
 .why-item p{font-size:.88rem;color:#c7d8ea}
 
 /* VS */
 .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
-.vs .col{background:#fff;border-radius:26px;padding:30px;box-shadow:0 10px 30px #0068b714}
-.vs .col.bad{background:#fff4f6}
-.vs .col h3{font-size:1.4rem;margin-bottom:14px}
-.vs ul{list-style:none;display:grid;gap:10px;font-size:.95rem}
-.vs .mid{display:grid;place-items:center;font-family:Fredoka;font-size:2rem;color:#fff;background:var(--pink);width:70px;height:70px;border-radius:50%;align-self:center;animation:pulse 1.6s infinite}
+.vs .col{background:#fff;border-radius:26px;padding:30px}
+.vs .col.bad{background:#fff1f4}
+.vs .col h3{font-size:1.4rem;margin-bottom:16px;color:var(--deep)}
+.vs ul{list-style:none;display:grid;gap:12px;font-size:.95rem}
+.vs li{display:flex;gap:10px;align-items:flex-start}
+.vs li .ico{margin-top:.25em;font-size:1.05rem}
+.vs .bad .ico{color:var(--pink)}
+.vs .good .ico{color:var(--wa)}
+.vs .mid{display:grid;place-items:center;font-family:Fredoka;font-size:2rem;color:#fff;background:var(--pink);width:70px;height:70px;border-radius:50%;align-self:center;animation:pulse 1.8s infinite}
 
 /* TESTI */
 .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.t{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 10px 30px #0068b714;transition:transform .3s}
-.t:nth-child(2){transform:rotate(1.5deg)}.t:nth-child(1){transform:rotate(-1.5deg)}
+.t{background:#fff;border-radius:26px;overflow:hidden;box-shadow:var(--lift);transition:transform .4s var(--ease)}
+.t:nth-child(1){transform:rotate(-1.5deg)}.t:nth-child(2){transform:rotate(1.5deg) translateY(16px)}
 .t:hover{transform:rotate(0) scale(1.03)}
 .t img{height:190px;width:100%;object-fit:cover}
 .t div{padding:22px}
 .t q{font-size:.98rem;display:block;margin-bottom:12px}
 .t b{font-size:.85rem;color:var(--blue)}
-.stars{color:#ffb800;letter-spacing:2px;margin-bottom:6px}
+.stars{display:flex;gap:2px;color:#f5a800;margin-bottom:8px}
+.stars svg{width:16px;height:16px;fill:currentColor}
 
 /* CTA */
 .cta{background:linear-gradient(135deg,var(--yellow),#ffb347);border-radius:36px;padding:56px;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:30px;position:relative;overflow:hidden}
 .cta h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--deep)}
-.cta p{margin:14px 0 24px;color:#5a4300;font-weight:600}
+.cta p{margin:14px 0 24px;color:#4f3b00;font-weight:600;max-width:52ch}
 .cta img{animation:float 4s ease-in-out infinite}
-.cta .btn{background:var(--deep);color:#fff;box-shadow:0 6px 0 #000}
+.cta .btn{background:var(--deep);color:#fff;box-shadow:0 12px 24px -10px rgb(6 38 74 / .6)}
 
 footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.85rem}
 
 /* FLOATING WA */
-.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px #25d36688;animation:pulse 2s infinite}
+.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 12px 24px -8px rgb(13 127 58 / .6);animation:pulseWa 2.2s infinite}
 .fab svg{width:32px;fill:#fff}
-.fab::before{content:"Psst.. tanya je 👋";position:absolute;right:72px;white-space:nowrap;background:#fff;color:var(--deep);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:12px;box-shadow:0 4px 14px #0002;animation:wiggle 3s infinite}
+.fab::before{content:"Psst.. tanya je";position:absolute;right:72px;white-space:nowrap;background:#fff;color:var(--deep);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:12px;box-shadow:var(--lift)}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+/* scroll reveal — starts visible, settles in */
+.rv{transform:translateY(26px);opacity:.25;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
-@keyframes float{50%{transform:translateY(-18px)}}
-@keyframes bob{50%{transform:translateY(-6px) rotate(8deg)}}
-@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes lineUp{from{clip-path:inset(0 0 100% 0);transform:translateY(40%)}to{clip-path:inset(0 0 -20% 0);transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}}
+@keyframes arrive{from{opacity:0;transform:translateY(50px) scale(.92);filter:blur(10px)}}
+@keyframes pop{from{transform:scale(0) rotate(-40deg)}}
+@keyframes float{50%{transform:translateY(-16px)}}
 @keyframes grow{from{transform:scaleX(0)}}
 @keyframes spin-bob{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-10px)}}
 @keyframes rise{to{transform:translateY(-110vh) translateX(var(--dx,20px))}}
 @keyframes scroll{to{transform:translateX(-50%)}}
 @keyframes wave{to{transform:translateX(25%)}}
-@keyframes pulse{0%{box-shadow:0 0 0 0 #ff5d8f88}70%{box-shadow:0 0 0 18px #ff5d8f00}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgb(214 36 92 / .5)}70%{box-shadow:0 0 0 18px rgb(214 36 92 / 0)}}
+@keyframes pulseWa{0%{box-shadow:0 0 0 0 rgb(13 127 58 / .5)}70%{box-shadow:0 0 0 16px rgb(13 127 58 / 0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 /* TABLET */
 @media (max-width:960px){
-  .perks,.testi{grid-template-columns:1fr 1fr}
+  .testi{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr 1fr}
   nav ul{display:none}
 }
@@ -188,7 +216,7 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 @media (max-width:640px){
   body{font-size:14px}
   .wrap{padding:0 16px}
-  section{padding:56px 0}
+  section{padding:60px 0}
   .btn{padding:11px 18px;font-size:.85rem}
   nav img{height:26px}
   nav .btn{padding:8px 14px;font-size:.75rem}
@@ -199,21 +227,23 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   .hero p.lead{font-size:.9rem;margin-bottom:20px}
   .tag{font-size:.7rem}
   .hero-art{order:-1;max-width:200px;margin:0 auto}
-  .price-bubble{width:84px;height:84px;font-size:.62rem;top:0;right:-6%}
+  .price-bubble{width:84px;height:84px;font-size:.7rem;top:0;right:-6%}
   .price-bubble b{font-size:1.4rem}
-  .trust{gap:16px;margin-top:22px}
-  .trust div{font-size:.72rem}.trust b{font-size:1.15rem}
+  .proof{font-size:.75rem;margin-top:20px}
+  .proof i{margin:0 5px}
   .marquee div{font-size:.85rem}
-  .sec-head{margin-bottom:30px}
+  .sec-head{margin-bottom:28px}
   .sec-head h2{font-size:1.45rem}
   .sec-head p{font-size:.85rem}
-  .sec-head small{font-size:.68rem}
   .perks,.testi,.why-grid{grid-template-columns:1fr}
-  .perk{padding:22px}.perk h3{font-size:1.1rem}.perk p{font-size:.85rem}.perk .ic{font-size:2rem}
+  .perk{padding:22px}.perk h3,.perk.hero-perk h3{font-size:1.15rem}.perk p{font-size:.85rem}
+  .perk.hero-perk{grid-row:auto;min-height:220px}
+  .perk.hero-perk .big{font-size:8rem}
   .temp{grid-template-columns:1fr;padding:28px 20px;border-radius:24px;gap:20px}
   .temp h2{font-size:1.35rem}
   .taps button{font-size:.78rem;padding:8px 13px}
   .glass{width:120px;height:160px}
+  .glass-ico{font-size:2rem}
   #tempMsg{font-size:1rem}
   .grid{grid-template-columns:1fr 1fr;gap:12px}
   .card{padding:12px;border-radius:18px}
@@ -225,8 +255,8 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   .card .joke{font-size:.74rem;margin:6px 0 8px}
   .card .price{font-size:1.35rem}
   .card .act{flex-direction:column;gap:6px}
-  .card .act a{padding:8px;font-size:.72rem;border-radius:10px}
-  .filters button{font-size:.75rem;padding:7px 13px}
+  .card .act a{padding:9px;font-size:.72rem;border-radius:10px}
+  .filters button{font-size:.75rem;padding:8px 13px}
   .why{border-radius:24px 24px 0 0}
   .why-item h3{font-size:1rem}.why-item p{font-size:.8rem}
   .vs{grid-template-columns:1fr}
@@ -236,7 +266,7 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   .t q{font-size:.88rem}
   .cta{grid-template-columns:1fr;padding:30px 22px;border-radius:24px;text-align:center}
   .cta h2{font-size:1.5rem}
-  .cta p{font-size:.85rem}
+  .cta p{font-size:.85rem;margin-inline:auto}
   .cta img{max-width:170px;margin:auto}
   .fab{width:54px;height:54px}
   .fab::before{font-size:.7rem;right:62px}
@@ -245,9 +275,27 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 </head>
 <body>
 
+<!-- icon sprite (Lucide paths, ISC) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M20 16l-4-4 4-4M4 8l4 4-4 4M16 4l-4 4-4-4M8 20l4-4 4 4"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 11 5 12 8c1-3 2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+</svg>
+
 <nav id="nav">
   <div class="wrap">
-    <a href="#"><img src="https://www.coway.promo/wp-content/uploads/2020/12/coway-malaysia-logo-2.png.webp" alt="Coway Malaysia"></a>
+    <a href="#"><img src="https://www.coway.promo/wp-content/uploads/2020/12/coway-malaysia-logo-2.png.webp" alt="Coway Malaysia" width="121" height="34"></a>
     <ul>
       <li><a href="#produk">Produk</a></li>
       <li><a href="#kenapa">Kenapa Coway</a></li>
@@ -260,51 +308,47 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 <header class="hero">
   <div class="bubbles" id="bubbles"></div>
   <div class="wrap">
-    <div class="rv">
-      <span class="tag">🇲🇾 PROMO OKTOBER 2026</span>
-      <h1>Berhenti rebus air.<br>Mula hidup <span class="hl">macam bos.</span></h1>
+    <div>
+      <span class="tag">PROMO OKTOBER 2026</span>
+      <h1><span class="line">Berhenti rebus air.</span><span class="line">Mula hidup <span class="hl">macam bos.</span></span></h1>
       <p class="lead">Water purifier Coway dari <b>RM20 sebulan</b> je — lebih murah dari teh tarik seminggu. Servis percuma tiap 2–4 bulan sampai 7 tahun. Kau minum, kami jaga.</p>
       <div class="ctas">
-        <a class="btn" href="https://wa.link/coway-promo-malaysia" target="_blank" rel="noopener">🎁 Check Promo Sekarang</a>
-        <a class="btn ghost" href="#produk">Tengok Model →</a>
+        <a class="btn" href="https://wa.link/coway-promo-malaysia" target="_blank" rel="noopener"><svg class="ico"><use href="#i-gift"/></svg>Check Promo Sekarang</a>
+        <a class="btn ghost" href="#produk">Tengok Model <svg class="ico"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="trust">
-        <div><b data-count="2000000">0</b>rumah dah pakai</div>
-        <div><b data-count="35">0</b>tahun berturut dipercayai</div>
-        <div><b data-count="1000000">0</b>ujian kualiti</div>
-      </div>
+      <p class="proof">Dipercayai <b class="num" data-count="2000000">2,000,000+</b> rumah<i aria-hidden="true">·</i><b class="num" data-count="35">35</b> tahun berturut<i aria-hidden="true">·</i><b class="num" data-count="1000000">1,000,000+</b> ujian kualiti</p>
     </div>
-    <div class="hero-art rv">
+    <div class="hero-art">
       <div class="price-bubble"><div>dari<b>RM20</b>/bulan</div></div>
+      <div class="bob"><img class="main" src="https://www.coway.promo/wp-content/uploads/2024/11/coway-neon-water-purifier-CHP-6210N.png.webp" alt="Coway NeoN"></div>
       <img class="side l" src="https://www.coway.promo/wp-content/uploads/2022/01/coway-cinnamon-new.png.webp" alt="Coway Cinnamon">
-      <img class="main" src="https://www.coway.promo/wp-content/uploads/2024/11/coway-neon-water-purifier-CHP-6210N.png.webp" alt="Coway NeoN">
       <img class="side r" src="https://www.coway.promo/wp-content/uploads/2024/05/coway-dazzie-CHP-1201N-1.png.webp" alt="Coway Dazzie">
     </div>
   </div>
 </header>
 
-<div class="marquee"><div id="mq">
-  <span>Servis PERCUMA tiap 2–4 bulan</span><span>Panas • Suam • Sejuk • Lagi sejuk</span><span>Dari RM20/bulan je</span><span>No more angkat galen 19L</span><span>2 juta rumah tak salah pilih</span><span>Pemasangan dalam beberapa hari</span>
+<div class="marquee" aria-hidden="true"><div id="mq">
+  <span>Servis PERCUMA tiap 2–4 bulan</span><svg class="ico"><use href="#i-drop"/></svg><span>Panas • Suam • Sejuk • Lagi sejuk</span><svg class="ico"><use href="#i-drop"/></svg><span>Dari RM20/bulan je</span><svg class="ico"><use href="#i-drop"/></svg><span>No more angkat galen 19L</span><svg class="ico"><use href="#i-drop"/></svg><span>2 juta rumah tak salah pilih</span><svg class="ico"><use href="#i-drop"/></svg><span>Pemasangan dalam beberapa hari</span><svg class="ico"><use href="#i-drop"/></svg>
 </div></div>
 
 <section class="promo">
   <div class="wrap rv">
     <a href="https://wa.link/coway-promo-malaysia" target="_blank" rel="noopener">
-      <img src="https://www.coway.promo/wp-content/uploads/2026/05/desktop-RM20-anniversary-all-products-2026may-promotion-cowaypromo-scaled.jpg.webp" alt="Promosi Coway RM20 sebulan">
+      <img src="https://www.coway.promo/wp-content/uploads/2026/05/desktop-RM20-anniversary-all-products-2026may-promotion-cowaypromo-scaled.jpg.webp" alt="Promosi Coway RM20 sebulan" width="2560" height="1654" style="height:auto">
     </a>
   </div>
 </section>
 
 <section style="padding-top:20px">
   <div class="wrap">
-    <div class="sec-head rv">
-      <small>Kenapa orang tak pandang belakang</small>
+    <div class="sec-head">
       <h2>3 sebab mak kau akan bangga</h2>
+      <p>Kenapa orang yang dah pakai tak pandang belakang.</p>
     </div>
-    <div class="perks">
-      <div class="perk rv"><span class="ic">💸</span><h3>Dari RM20/bulan</h3><p>Pelan fleksibel, mampu milik. Lagi murah dari langganan streaming yang kau dah lupa nak cancel.</p><span class="big">RM</span></div>
-      <div class="perk rv"><span class="ic">🔧</span><h3>Servis Percuma 7 Tahun</h3><p>Tiap 2–4 bulan Coway Lady datang servis. Paling kerap dalam pasaran. Kau tak payah ingat — kami yang ingat.</p><span class="big">7</span></div>
-      <div class="perk rv"><span class="ic">🧊</span><h3>4 Suhu, 1 Tekan</h3><p>Panas untuk Milo, sejuk untuk tengah hari Malaysia yang macam oven. Terus keluar, tak payah tunggu.</p><span class="big">°C</span></div>
+    <div class="perks rv">
+      <div class="perk hero-perk"><h3><svg class="ico"><use href="#i-wallet"/></svg>Dari RM20/bulan</h3><p>Pelan fleksibel, mampu milik. Lagi murah dari langganan streaming yang kau dah lupa nak cancel.</p><span class="big">RM</span></div>
+      <div class="perk"><h3><svg class="ico"><use href="#i-wrench"/></svg>Servis Percuma 7 Tahun</h3><p>Tiap 2–4 bulan Coway Lady datang servis. Paling kerap dalam pasaran. Kau tak payah ingat — kami yang ingat.</p><span class="big">7</span></div>
+      <div class="perk"><h3><svg class="ico"><use href="#i-snow"/></svg>4 Suhu, 1 Tekan</h3><p>Panas untuk Milo, sejuk untuk tengah hari Malaysia yang macam oven. Terus keluar, tak payah tunggu.</p><span class="big">°C</span></div>
     </div>
   </div>
 </section>
@@ -313,19 +357,19 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   <div class="wrap">
     <div class="temp rv">
       <div>
-        <h2>Cuba tekan. Kami tunggu. 👇</h2>
+        <h2>Cuba tekan. Kami tunggu.</h2>
         <p>Ni simulator je. Yang betul punya lagi best — sebab ada air betul.</p>
         <div class="taps" id="taps">
-          <button data-c="#ff7a59" data-e="☕" data-m="Panas! Sesuai untuk Milo, Nescafe, mi segera tengah malam.">🔥 Panas</button>
-          <button data-c="#ffd9a0" data-e="🍼" data-m="Suam — ngam untuk susu baby. Tak payah tiup-tiup lagi.">🌤 Suam</button>
-          <button class="on" data-c="#7fd8ff" data-e="💧" data-m="Biasa. Air bersih, rasa macam air gunung (tapi tak payah mendaki).">💧 Biasa</button>
-          <button data-c="#b8f0ff" data-e="🥶" data-m="Sejuk gila. Cuaca 35°C? Tak kenal dia.">❄️ Sejuk</button>
+          <button data-c="#ff7a59" data-i="i-flame" data-m="Panas! Sesuai untuk Milo, Nescafe, mi segera tengah malam."><svg class="ico"><use href="#i-flame"/></svg>Panas</button>
+          <button data-c="#ffd9a0" data-i="i-sun" data-m="Suam — ngam untuk susu baby. Tak payah tiup-tiup lagi."><svg class="ico"><use href="#i-sun"/></svg>Suam</button>
+          <button class="on" data-c="#7fd8ff" data-i="i-drop" data-m="Biasa. Air bersih, rasa macam air gunung (tapi tak payah mendaki)."><svg class="ico"><use href="#i-drop"/></svg>Biasa</button>
+          <button data-c="#b8f0ff" data-i="i-snow" data-m="Sejuk gila. Cuaca 35°C? Tak kenal dia."><svg class="ico"><use href="#i-snow"/></svg>Sejuk</button>
         </div>
-        <div id="tempMsg">Biasa. Air bersih, rasa macam air gunung (tapi tak payah mendaki).</div>
+        <div id="tempMsg" aria-live="polite">Biasa. Air bersih, rasa macam air gunung (tapi tak payah mendaki).</div>
       </div>
       <div>
         <div class="glass" id="glass"><div class="water"></div></div>
-        <div class="glass-emoji" id="gEmoji">💧</div>
+        <svg class="ico glass-ico" id="gIco"><use href="#i-drop"/></svg>
       </div>
     </div>
   </div>
@@ -333,15 +377,14 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 
 <section id="produk">
   <div class="wrap">
-    <div class="sec-head rv">
-      <small>Top-Selling 2026</small>
+    <div class="sec-head">
       <h2>Pilih geng purifier kau</h2>
-      <p>Semua handsome. Semua cantik. Yang beza cuma saiz dompet dan saiz dapur.</p>
+      <p>Top-selling 2026. Semua handsome, semua cantik — yang beza cuma saiz dompet dan saiz dapur.</p>
     </div>
     <div class="filters" id="filters">
       <button class="on" data-f="all">Semua</button>
-      <button data-f="home">🏠 Rumah & Famili</button>
-      <button data-f="office">🏢 Office / Outdoor</button>
+      <button data-f="home"><svg class="ico"><use href="#i-home"/></svg>Rumah & Famili</button>
+      <button data-f="office"><svg class="ico"><use href="#i-building"/></svg>Office / Outdoor</button>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -349,16 +392,15 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 
 <section class="why" id="kenapa">
   <div class="wrap">
-    <div class="sec-head rv">
-      <small>Bukan cakap kosong</small>
+    <div class="sec-head">
       <h2>Kenapa Coway raja pasaran?</h2>
       <p>Kami tak main-main bab air. Serius. Ni je bahagian yang kami serius.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-item rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/m_cwrnd_3_3.jpg.webp" alt="Ujian kualiti Coway"><div><h3>1 Juta Ujian</h3><p>Produk Coway diuji lebih sejuta kali. Lagi banyak dari kau test password WiFi jiran.</p></div></div>
-      <div class="why-item rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/17G040244_01_880x660.jpg.webp" alt="Rekaan Coway"><div><h3>Rekaan Menang Anugerah</h3><p>Praktikal dan classy. Tetamu datang, terus tanya "beli kat mana ni?"</p></div></div>
-      <div class="why-item rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/research-and-development-bg-xs.jpg.webp" alt="Pusat R&D Coway"><div><h3>R&D Terbesar Dunia</h3><p>370 penyelidik, 182 peralatan canggih, pusat R&D bertauliah WQA. Semua demi segelas air kau.</p></div></div>
-      <div class="why-item rv"><img src="https://www.coway.promo/wp-content/uploads/2024/01/codys-pix.jpg.webp" alt="Servis Coway"><div><h3>Servis No.1</h3><p>HEART Service seluruh Malaysia. Dari Perlis sampai Sabah, Coway Lady sampai.</p></div></div>
+    <div class="why-grid rv">
+      <div class="why-item"><img src="https://www.coway.promo/wp-content/uploads/2020/01/m_cwrnd_3_3.jpg.webp" alt="Ujian kualiti Coway" loading="lazy"><div><h3>1 Juta Ujian</h3><p>Produk Coway diuji lebih sejuta kali. Lagi banyak dari kau test password WiFi jiran.</p></div></div>
+      <div class="why-item"><img src="https://www.coway.promo/wp-content/uploads/2020/01/17G040244_01_880x660.jpg.webp" alt="Rekaan Coway" loading="lazy"><div><h3>Rekaan Menang Anugerah</h3><p>Praktikal dan classy. Tetamu datang, terus tanya "beli kat mana ni?"</p></div></div>
+      <div class="why-item"><img src="https://www.coway.promo/wp-content/uploads/2020/01/research-and-development-bg-xs.jpg.webp" alt="Pusat R&D Coway" loading="lazy"><div><h3>R&D Terbesar Dunia</h3><p>370 penyelidik, 182 peralatan canggih, pusat R&D bertauliah WQA. Semua demi segelas air kau.</p></div></div>
+      <div class="why-item"><img src="https://www.coway.promo/wp-content/uploads/2024/01/codys-pix.jpg.webp" alt="Servis Coway" loading="lazy"><div><h3>Servis No.1</h3><p>HEART Service seluruh Malaysia. Dari Perlis sampai Sabah, Coway Lady sampai.</p></div></div>
     </div>
   </div>
 </section>
@@ -367,13 +409,23 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   <div class="wrap">
     <div class="vs rv">
       <div class="col bad">
-        <h3>😩 Hidup tanpa Coway</h3>
-        <ul><li>🔥 Rebus air, tunggu sejuk, lupa, rebus lagi</li><li>🏋️ Angkat galen 19L — gym percuma tapi sakit pinggang</li><li>🧂 Kerak putih dalam cerek</li><li>🌡 Nak air sejuk? Masuk peti, tunggu 3 jam</li></ul>
+        <h3>Hidup tanpa Coway</h3>
+        <ul>
+          <li><svg class="ico"><use href="#i-x"/></svg>Rebus air, tunggu sejuk, lupa, rebus lagi</li>
+          <li><svg class="ico"><use href="#i-x"/></svg>Angkat galen 19L — gym percuma tapi sakit pinggang</li>
+          <li><svg class="ico"><use href="#i-x"/></svg>Kerak putih dalam cerek</li>
+          <li><svg class="ico"><use href="#i-x"/></svg>Nak air sejuk? Masuk peti, tunggu 3 jam</li>
+        </ul>
       </div>
       <div class="mid">VS</div>
-      <div class="col">
-        <h3>😎 Hidup dengan Coway</h3>
-        <ul><li>⚡ Tekan, terus keluar. Panas, sejuk, suam</li><li>🧑‍🔧 Servis percuma, datang sendiri</li><li>✨ Air ditapis teknologi bertaraf dunia</li><li>💰 Dari RM20/bulan. Settle.</li></ul>
+      <div class="col good">
+        <h3>Hidup dengan Coway</h3>
+        <ul>
+          <li><svg class="ico"><use href="#i-check"/></svg>Tekan, terus keluar. Panas, sejuk, suam</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Servis percuma, datang sendiri</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Air ditapis teknologi bertaraf dunia</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Dari RM20/bulan. Settle.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -381,14 +433,14 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
 
 <section id="testimoni">
   <div class="wrap">
-    <div class="sec-head rv">
-      <small>Customer's Voice</small>
+    <div class="sec-head">
       <h2>Bukan kami yang cakap, sumpah.</h2>
+      <p>Suara pelanggan sebenar.</p>
     </div>
-    <div class="testi">
-      <div class="t rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/3A32BC55-0298-4B21-8A6D-BBBAFB78A9AA.jpg.webp" alt=""><div><div class="stars">★★★★★</div><q>Office saya sudah guna Coway water filter dah 2 tahun lebih, semuanya terjaga servis percuma, kerosakan pun tak perlu bayar apa apa!</q><b>Puan Sharifah, Selayang</b></div></div>
-      <div class="t rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/COWAY-FAMILY-e1580554978620.jpg.webp" alt=""><div><div class="stars">★★★★★</div><q>Thank you for your service Coway Lady! Now our family love to drink more water everyday, it's clean &amp; healthy. And NO MORE tired of boiling water.</q><b>Janet Koh, Puchong</b></div></div>
-      <div class="t rv"><img src="https://www.coway.promo/wp-content/uploads/2020/01/cody-pic.jpg.webp" alt=""><div><div class="stars">★★★★★</div><q>Dari daftar sampai siap memasang hanya ambil beberapa hari saja. Thank you COWAY!</q><b>Puan Zuraidah, Shah Alam</b></div></div>
+    <div class="testi rv">
+      <div class="t"><img src="https://www.coway.promo/wp-content/uploads/2020/01/3A32BC55-0298-4B21-8A6D-BBBAFB78A9AA.jpg.webp" alt="" loading="lazy"><div><div class="stars" aria-label="5 bintang"></div><q>Office saya sudah guna Coway water filter dah 2 tahun lebih, semuanya terjaga servis percuma, kerosakan pun tak perlu bayar apa apa!</q><b>Puan Sharifah, Selayang</b></div></div>
+      <div class="t"><img src="https://www.coway.promo/wp-content/uploads/2020/01/COWAY-FAMILY-e1580554978620.jpg.webp" alt="" loading="lazy"><div><div class="stars" aria-label="5 bintang"></div><q>Thank you for your service Coway Lady! Now our family love to drink more water everyday, it's clean &amp; healthy. And NO MORE tired of boiling water.</q><b>Janet Koh, Puchong</b></div></div>
+      <div class="t"><img src="https://www.coway.promo/wp-content/uploads/2020/01/cody-pic.jpg.webp" alt="" loading="lazy"><div><div class="stars" aria-label="5 bintang"></div><q>Dari daftar sampai siap memasang hanya ambil beberapa hari saja. Thank you COWAY!</q><b>Puan Zuraidah, Shah Alam</b></div></div>
     </div>
   </div>
 </section>
@@ -397,11 +449,11 @@ footer{text-align:center;padding:40px 20px 100px;color:var(--muted);font-size:.8
   <div class="wrap">
     <div class="cta rv">
       <div>
-        <h2>Cerek kau dah penat. Bagi dia pencen. 🫖</h2>
+        <h2>Cerek kau dah penat. Bagi dia pencen.</h2>
         <p>WhatsApp sales expert kami sekarang — dapat promo RM20/bulan + HADIAH PERCUMA (selagi stok ada, jangan tunggu esok).</p>
-        <a class="btn" href="https://wa.link/coway-promo-malaysia" target="_blank" rel="noopener">💬 Nak Promo RM20 Ni!</a>
+        <a class="btn" href="https://wa.link/coway-promo-malaysia" target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Nak Promo RM20 Ni!</a>
       </div>
-      <img src="https://www.coway.promo/wp-content/uploads/2020/02/COWAY-FAMILY.png.webp" alt="Keluarga Coway">
+      <img src="https://www.coway.promo/wp-content/uploads/2020/02/COWAY-FAMILY.png.webp" alt="Keluarga Coway" loading="lazy">
     </div>
   </div>
 </section>
@@ -431,29 +483,35 @@ const products = [
   ["Lucy Plus","Sempurna dalam ais & air","Ada ais! Buat air bandung sendiri, tak payah keluar rumah.","150","2021/09/coway-lucy-plus.png.webp","office","",SITE+"home-2/coway-lucy-plus/"],
   ["Outdoor Filter","Perlindungan lapisan pertama rumah","Bodyguard paip rumah kau. Kotoran tak lepas pintu pagar.","60*","2024/04/coway-outdoor-filter-POE-23A-1.png.webp","home","Tawaran Terhad",SITE+"coway-outdoor-filter/"],
 ];
-document.getElementById("grid").innerHTML = products.map(([n,s,j,p,img,cat,b,link]) => `
-  <div class="card rv" data-cat="${cat}">
+const grid = document.getElementById("grid");
+grid.innerHTML = products.map(([n,s,j,p,img,cat,b,link]) => `
+  <div class="card" data-cat="${cat}">
     ${b ? `<span class="badge ${b==="BARU"?"":"y"}">${b}</span>` : ""}
     <div class="pic"><img loading="lazy" src="${IMG+img}" alt="Coway ${n}"></div>
     <h3>${n}</h3><div class="sub">${s}</div><p class="joke">${j}</p>
     <div class="price">RM${p}<small> /bulan</small></div>
     <div class="act"><a href="${link}" target="_blank" rel="noopener">Detail</a><a href="${WA}" target="_blank" rel="noopener">Nak Ni!</a></div>
   </div>`).join("");
+grid.classList.add("rv");
+
+// stars
+document.querySelectorAll(".stars").forEach(s => s.innerHTML = '<svg><use href="#i-star"/></svg>'.repeat(5));
 
 // filter
 document.getElementById("filters").onclick = e => {
-  const f = e.target.dataset.f; if (!f) return;
-  document.querySelectorAll("#filters button").forEach(b => b.classList.toggle("on", b === e.target));
+  const btn = e.target.closest("button"); if (!btn) return;
+  const f = btn.dataset.f;
+  document.querySelectorAll("#filters button").forEach(b => b.classList.toggle("on", b === btn));
   document.querySelectorAll(".card").forEach(c => c.classList.toggle("hide", f !== "all" && c.dataset.cat !== f));
 };
 
 // temperature toy
-const glass = document.getElementById("glass"), gE = document.getElementById("gEmoji"), msg = document.getElementById("tempMsg");
+const glass = document.getElementById("glass"), gIco = document.getElementById("gIco"), msg = document.getElementById("tempMsg");
 document.getElementById("taps").onclick = e => {
   const b = e.target.closest("button"); if (!b) return;
   document.querySelectorAll("#taps button").forEach(x => x.classList.toggle("on", x === b));
-  glass.style.setProperty("--c", b.dataset.c); gE.textContent = b.dataset.e; msg.textContent = b.dataset.m;
-  gE.animate([{transform:"scale(1.6) rotate(-15deg)"},{transform:"none"}],{duration:400,easing:"ease-out"});
+  glass.style.setProperty("--c", b.dataset.c); gIco.firstElementChild.setAttribute("href", "#" + b.dataset.i); msg.textContent = b.dataset.m;
+  gIco.animate([{transform:"scale(1.6) rotate(-15deg)"},{transform:"none"}],{duration:500,easing:"cubic-bezier(.16,1,.3,1)"});
 };
 
 // marquee: duplicate for seamless loop
@@ -468,20 +526,17 @@ for (let i = 0; i < 18; i++) {
   bub.appendChild(s);
 }
 
-// count-up
-const countUp = el => {
-  const end = +el.dataset.count, t0 = performance.now();
-  const tick = t => { const k = Math.min((t - t0) / 1600, 1); el.textContent = Math.round(end * (1 - (1 - k) ** 3)).toLocaleString("en") + (k === 1 && end > 100 ? "+" : ""); if (k < 1) requestAnimationFrame(tick); };
+// count-up (hero proof line)
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelectorAll("[data-count]").forEach(el => {
+  const end = +el.dataset.count, t0 = performance.now() + 700;
+  const tick = t => { const k = Math.max(0, Math.min((t - t0) / 1600, 1)); el.textContent = Math.round(end * (1 - (1 - k) ** 3)).toLocaleString("en") + (k === 1 && end > 100 ? "+" : ""); if (k < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
-};
+});
 
-// scroll reveal (stagger siblings)
+// scroll reveal: once per block
 const io = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  const el = e.target, i = [...el.parentElement.children].filter(c => c.classList.contains("rv")).indexOf(el);
-  el.style.transitionDelay = Math.min(i, 6) * 80 + "ms";
-  el.classList.add("in"); el.querySelectorAll("[data-count]").forEach(countUp); io.unobserve(el);
-}), {threshold:.12});
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), {threshold:.08});
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
 // nav solid on scroll
