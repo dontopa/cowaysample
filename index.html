@@ -15,8 +15,8 @@
   --lift:0 14px 30px -12px rgb(6 38 74 / .28);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scrollbar-color:var(--blue) var(--sky);accent-color:var(--blue)}
-body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.55;caret-color:var(--blue)}
+html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth;scrollbar-color:var(--blue) var(--sky);accent-color:var(--blue)}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;overflow-x:clip;line-height:1.55;caret-color:var(--blue)}
 ::selection{background:var(--yellow);color:var(--deep)}
 :focus-visible{outline:3px solid var(--aqua);outline-offset:3px;border-radius:8px}
 h1,h2,h3{font-family:Fredoka,sans-serif;line-height:1.1;text-wrap:balance}
@@ -69,7 +69,7 @@ nav ul a:hover{color:var(--blue);text-decoration:underline}
 .bubbles span{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#9fdcff55 60%,#2ec5ff22);border:1px solid #ffffff99;animation:rise linear infinite;pointer-events:none}
 
 /* MARQUEE */
-.marquee{background:var(--deep);color:#fff;overflow:hidden;padding:14px 0;transform:rotate(-1.5deg);margin:-20px -10px 0;position:relative;z-index:4}
+.marquee{background:var(--deep);color:#fff;overflow:hidden;padding:14px 0;transform:rotate(-1.5deg);margin:-20px 0 0;position:relative;z-index:4}
 .marquee div{display:flex;align-items:center;gap:28px;width:max-content;animation:scroll 28s linear infinite;font-family:Fredoka;font-size:1.15rem;white-space:nowrap}
 .marquee .ico{color:var(--aqua)}
 
