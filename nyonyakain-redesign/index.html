@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nyonya Kain — Heritage Textiles for Modern Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f8f1e7; --cream-2:#f1e6d6; --paper:#fffaf3;
+  --rose:#b8505c; --rose-soft:#ecd3d0; --rose-deep:#8e3343;
+  --sage:#7f9a82; --sage-soft:#dfe6da; --forest:#1f3d33;
+  --ink:#2b2622; --muted:#6d625a; --gold:#b8935a;
+  --serif:"Cormorant Garamond", "Liberation Serif", Georgia, serif;
+  --sans:"DM Sans", "Liberation Sans", Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);color:var(--forest);font-weight:600;line-height:1.1}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:600}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.2s}
+.btn-primary{background:var(--forest);color:#fff}
+.btn-primary:hover{background:var(--rose-deep)}
+.btn-ghost{border:1.5px solid var(--forest);color:var(--forest)}
+.btn-ghost:hover{background:var(--forest);color:#fff}
+
+/* Batik-ish pattern used as image placeholder */
+.ph{position:relative;border-radius:18px;overflow:hidden;background-color:var(--rose-soft);
+  background-image:
+   radial-gradient(circle at 25% 25%, rgba(184,80,92,.35) 0 9px, transparent 10px),
+   radial-gradient(circle at 75% 75%, rgba(127,154,130,.45) 0 9px, transparent 10px),
+   radial-gradient(circle at 75% 25%, transparent 0 15px, rgba(184,147,90,.35) 16px 17px, transparent 18px),
+   radial-gradient(circle at 25% 75%, transparent 0 15px, rgba(31,61,51,.18) 16px 17px, transparent 18px);
+  background-size:56px 56px}
+.ph.sage{background-color:var(--sage-soft)}
+.ph.cream{background-color:var(--cream-2)}
+.ph::after{content:attr(data-label);position:absolute;left:12px;bottom:12px;background:rgba(255,250,243,.92);color:var(--muted);
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+
+/* Top bar & header */
+.topbar{background:var(--forest);color:#e9e1d3;font-size:13px;text-align:center;padding:8px 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(248,241,231,.94);backdrop-filter:blur(8px);border-bottom:1px solid #e6d9c6}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--serif);font-size:30px;color:var(--rose-deep);font-weight:600}
+.logo small{font-size:9px;letter-spacing:.22em;white-space:nowrap;color:var(--muted);margin-top:4px}
+.menu{display:flex;gap:22px;font-size:14px;font-weight:500;white-space:nowrap}
+.menu a:hover{color:var(--rose)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid #dccdb7}
+.burger{display:none}
+
+/* Hero */
+.hero{padding:64px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:64px;margin:16px 0 20px}
+.hero h1 em{color:var(--rose);font-style:italic}
+.hero p{font-size:18px;color:var(--muted);max-width:500px}
+.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:36px;margin-top:40px;padding-top:28px;border-top:1px solid #e3d5c1}
+.hero-stats b{font-family:var(--serif);font-size:30px;color:var(--forest);display:block}
+.hero-stats span{font-size:13px;color:var(--muted)}
+.hero-art{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 200px;gap:16px}
+.hero-art .ph:first-child{grid-row:span 2}
+
+/* Sections */
+section{padding:84px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
+.sec-head h2{font-size:46px;margin-top:10px}
+.sec-head p{color:var(--muted);max-width:420px}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat .ph{height:280px}
+.cat h3{font-size:24px;margin-top:14px}
+.cat span{font-size:14px;color:var(--muted)}
+
+.products{background:var(--paper)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card .ph{height:300px}
+.card .tag{position:absolute;top:12px;left:12px;background:var(--rose);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;z-index:2;letter-spacing:.06em}
+.card h3{font-size:21px;margin:14px 0 4px}
+.card .meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+.card .price{color:var(--forest);font-weight:600}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story .ph{height:520px}
+.story h2{font-size:48px;margin:12px 0 20px}
+.story p{color:var(--muted);margin-bottom:16px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.values div{background:var(--paper);border:1px solid #eadcc8;border-radius:14px;padding:16px}
+.values b{font-family:var(--serif);font-size:20px;color:var(--forest);display:block}
+.values span{font-size:13px;color:var(--muted)}
+
+/* B2B duo */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{border-radius:24px;padding:44px;display:flex;flex-direction:column;gap:16px;min-height:380px;position:relative;overflow:hidden}
+.panel h2{font-size:40px}
+.panel ul{list-style:none;display:grid;gap:8px;margin:6px 0 10px}
+.panel li{padding-left:26px;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:8px;width:14px;height:8px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg)}
+.panel.gift{background:var(--rose-soft)}
+.panel.gift li::before{color:var(--rose)}
+.panel.resell{background:var(--forest);color:#e9e1d3}
+.panel.resell h2{color:#fff}
+.panel.resell .eyebrow{color:#e7b9b2}
+.panel.resell li::before{color:#a8c2a9}
+.panel.resell .btn{background:#fff;color:var(--forest);align-self:flex-start}
+.panel.gift .btn{align-self:flex-start}
+
+/* Press */
+.press{background:var(--paper)}
+.press-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
+.press-card{background:var(--cream);border-radius:18px;overflow:hidden;border:1px solid #eadcc8}
+.press-card .ph{border-radius:0;height:200px}
+.press-card div.txt{padding:20px 22px 24px}
+.press-card small{color:var(--rose);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.press-card h3{font-size:23px;margin-top:8px}
+.press-card.feature .ph{height:280px}
+.founder{display:flex;gap:20px;align-items:center;margin-top:40px;padding:28px;border-radius:20px;background:var(--sage-soft)}
+.founder .ph{width:110px;height:110px;border-radius:50%;flex:none}
+.founder .ph::after{display:none}
+.founder p{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--forest);line-height:1.3}
+.founder span{font-size:14px;color:var(--muted)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact h2{font-size:48px;margin:12px 0 16px}
+.c-list{display:grid;gap:14px;margin-top:24px}
+.c-item{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid #eadcc8;border-radius:14px;padding:16px 20px}
+.c-item .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--rose-soft);color:var(--rose-deep);flex:none}
+.c-item b{display:block;font-size:15px}
+.c-item span{font-size:14px;color:var(--muted)}
+form{background:var(--paper);border:1px solid #eadcc8;border-radius:22px;padding:32px;display:grid;gap:14px}
+form h3{font-size:28px}
+label{font-size:13px;font-weight:600;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid #dccdb7;border-radius:10px;background:#fff;margin-top:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+footer{background:var(--forest);color:#cfc7b8;padding:56px 0 28px;font-size:14px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h4{color:#fff;font-family:var(--serif);font-size:20px;margin-bottom:12px;font-weight:600}
+footer ul{list-style:none;display:grid;gap:8px}
+footer .logo b{color:#f0c9c3}
+footer .logo small{color:#a9b5a8}
+.f-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.wa-float{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:30}
+
+@media (max-width:1240px){.menu{gap:16px;font-size:13px}.nav-cta .btn{display:none}}
+@media (max-width:1080px){.menu{display:none}.burger{display:grid}}
+@media (max-width:980px){
+  .hero-grid,.story-grid,.duo,.contact-grid{grid-template-columns:1fr}
+  .cats,.pgrid{grid-template-columns:repeat(2,1fr)}
+  .press-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:46px}
+  .sec-head{flex-direction:column;align-items:start}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .hero h1{font-size:38px}.sec-head h2,.story h2,.contact h2{font-size:34px}
+  .cats,.pgrid,.values,.row2,.f-grid{grid-template-columns:1fr}
+  .hero-art{grid-template-rows:180px 150px}
+  .panel{padding:28px}
+  .nav-cta .btn{display:none}
+  .logo b{font-size:24px}.logo small{font-size:7.5px;letter-spacing:.14em}
+  .nav-cta{gap:6px}.icon-btn{width:36px;height:36px}
+  .hero-stats{gap:20px;flex-wrap:wrap}
+}
+@media print{
+  header{position:static}
+  .wa-float{display:none}
+  section{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Free shipping within Peninsular Malaysia for orders above RM200 · Corporate & bulk orders welcome</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="logo"><b>Nyonya Kain</b><small>HERITAGE TEXTILES FOR MODERN LIVING</small></a>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#gifting">Corporate Gifting</a>
+      <a href="#reseller">Become a Reseller</a>
+      <a href="#about">About</a>
+      <a href="#press">Press &amp; Media</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="icon-btn" href="#shop" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+      <a class="icon-btn" href="#shop" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></a>
+      <a class="btn btn-primary" href="#shop">Shop Now</a>
+      <a class="icon-btn burger" href="#" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Peranakan heritage · Made for today</span>
+        <h1>Heritage textiles,<br><em>woven</em> into modern living.</h1>
+        <p>Nyonya Kain brings the colours, motifs and craft of Nyonya batik and kain into pieces you can wear, gift and live with every day.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#shop">Explore the Collection →</a>
+          <a class="btn btn-ghost" href="#gifting">Corporate Gifting</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>Batik</b><span>Hand-selected prints</span></div>
+          <div><b>Gifting</b><span>Custom &amp; bulk orders</span></div>
+          <div><b>Resellers</b><span>Consignment welcome</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="ph" data-label="Hero image · from old site"></div>
+        <div class="ph sage" data-label="Product close-up"></div>
+        <div class="ph cream" data-label="Lifestyle shot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Shop by category</span><h2>Find your piece</h2></div>
+        <p>Categories organised and clean, so customers find what they want in two clicks.</p>
+      </div>
+      <div class="cats">
+        <a class="cat" href="#"><div class="ph" data-label="Category image"></div><h3>Sarong &amp; Kain</h3><span>View collection →</span></a>
+        <a class="cat" href="#"><div class="ph sage" data-label="Category image"></div><h3>Scarves &amp; Shawls</h3><span>View collection →</span></a>
+        <a class="cat" href="#"><div class="ph cream" data-label="Category image"></div><h3>Home Textiles</h3><span>View collection →</span></a>
+        <a class="cat" href="#"><div class="ph" data-label="Category image"></div><h3>Gift Sets</h3><span>View collection →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Best sellers</span><h2>Customer favourites</h2></div>
+        <a class="btn btn-ghost" href="#">View all products</a>
+      </div>
+      <div class="pgrid">
+        <a class="card" href="#"><div class="ph" data-label="Product photo"><span class="tag">NEW</span></div><h3>Product Name 01</h3><div class="meta"><span>Batik · Cotton</span><span class="price">RM —</span></div></a>
+        <a class="card" href="#"><div class="ph sage" data-label="Product photo"></div><h3>Product Name 02</h3><div class="meta"><span>Batik · Rayon</span><span class="price">RM —</span></div></a>
+        <a class="card" href="#"><div class="ph cream" data-label="Product photo"><span class="tag">BEST SELLER</span></div><h3>Product Name 03</h3><div class="meta"><span>Scarf</span><span class="price">RM —</span></div></a>
+        <a class="card" href="#"><div class="ph" data-label="Product photo"></div><h3>Product Name 04</h3><div class="meta"><span>Gift Set</span><span class="price">RM —</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="about">
+    <div class="wrap story-grid">
+      <div class="ph sage" data-label="Brand / workshop photo"></div>
+      <div>
+        <span class="eyebrow">About Nyonya Kain</span>
+        <h2>A living heritage, carried forward.</h2>
+        <p>[Brand story from the existing site goes here: how Nyonya Kain started, the Peranakan textile tradition behind it, and the people who keep the craft alive.]</p>
+        <p>Every piece celebrates the motifs, colours and patience of Nyonya textile craft, made to be worn and loved today, not kept in a drawer.</p>
+        <div class="values">
+          <div><b>Heritage</b><span>Rooted in Peranakan craft</span></div>
+          <div><b>Quality</b><span>Carefully selected fabrics</span></div>
+          <div><b>Modern</b><span>Designed for daily living</span></div>
+        </div>
+        <a class="btn btn-ghost" href="#press" style="margin-top:28px">Meet the founder</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gifting">
+    <div class="wrap duo">
+      <div class="panel gift">
+        <span class="eyebrow">Corporate Gifting</span>
+        <h2>Gifts with meaning, made for your brand.</h2>
+        <p>Heritage textile gifts for clients, staff and events, with custom packaging and bulk pricing.</p>
+        <ul><li>Custom orders &amp; branded packaging</li><li>Festive, event &amp; appreciation gifts</li><li>Quotation within 2 working days</li></ul>
+        <a class="btn btn-primary" href="#contact">Request a Quote</a>
+      </div>
+      <div class="panel resell" id="reseller">
+        <span class="eyebrow">Become a Reseller</span>
+        <h2>Grow with Nyonya Kain.</h2>
+        <p>Join our reseller &amp; consignment programme and bring heritage textiles to your community.</p>
+        <ul><li>Eligibility &amp; reseller benefits</li><li>Simple application process</li><li>Support with product photos &amp; info</li></ul>
+        <a class="btn" href="#contact">Apply as Reseller</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="press" id="press">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Founder, Press &amp; Media</span><h2>As featured in</h2></div>
+        <p>Articles, interviews, media coverage and speaking engagements, all in one easy-to-update page.</p>
+      </div>
+      <div class="press-grid">
+        <a class="press-card feature" href="#"><div class="ph" data-label="Media feature image"></div><div class="txt"><small>Interview</small><h3>[Media feature headline from old site]</h3></div></a>
+        <a class="press-card" href="#"><div class="ph sage" data-label="Article image"></div><div class="txt"><small>Article</small><h3>[Article title]</h3></div></a>
+        <a class="press-card" href="#"><div class="ph cream" data-label="Event image"></div><div class="txt"><small>Speaking</small><h3>[Talk / event title]</h3></div></a>
+      </div>
+      <div class="founder">
+        <div class="ph"></div>
+        <div><p>“[Founder quote: why heritage textiles matter today.]”</p><span>[Founder name], Founder of Nyonya Kain</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Let’s talk textiles.</h2>
+        <p style="color:var(--muted)">For orders, corporate gifting or reseller enquiries, reach us directly. WhatsApp is the fastest.</p>
+        <div class="c-list">
+          <a class="c-item" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg></span><div><b>WhatsApp</b><span>[+60 number from old site]</span></div></a>
+          <a class="c-item" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><b>Email</b><span>[email from old site]</span></div></a>
+          <a class="c-item" href="#"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span><div><b>Instagram · Facebook · TikTok</b><span>[social handles]</span></div></a>
+        </div>
+      </div>
+      <form onsubmit="return false">
+        <h3>Send an enquiry</h3>
+        <div class="row2"><label>Name<input placeholder="Your name"></label><label>Phone<input placeholder="+60"></label></div>
+        <label>Email<input placeholder="you@email.com"></label>
+        <label>Enquiry type<select><option>General / Order</option><option>Corporate Gifting</option><option>Reseller / Consignment</option><option>Press &amp; Media</option></select></label>
+        <label>Message<textarea rows="4" placeholder="Tell us what you need"></textarea></label>
+        <button class="btn btn-primary" style="border:0;cursor:pointer;justify-self:start">Send Enquiry</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><div class="logo"><b>Nyonya Kain</b><small>HERITAGE TEXTILES FOR MODERN LIVING</small></div><p style="margin-top:16px;max-width:280px">Heritage textiles inspired by Peranakan craft, made for modern living.</p></div>
+      <div><h4>Shop</h4><ul><li>All Products</li><li>Sarong &amp; Kain</li><li>Scarves</li><li>Gift Sets</li></ul></div>
+      <div><h4>Business</h4><ul><li>Corporate Gifting</li><li>Become a Reseller</li><li>Press &amp; Media</li></ul></div>
+      <div><h4>Help</h4><ul><li>Shipping &amp; Returns</li><li>Privacy Policy</li><li>Terms</li><li>Contact</li></ul></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 Nyonya Kain. All rights reserved.</span><span>nyonyakain.com</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="#contact" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg></a>
+</body>
+</html>

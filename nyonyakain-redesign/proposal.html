@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nyonya Kain — Proposal &amp; Quotation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{--cream:#f8f1e7;--paper:#fffaf3;--rose:#b8505c;--rose-soft:#ecd3d0;--rose-deep:#8e3343;--sage:#7f9a82;--sage-soft:#dfe6da;--forest:#1f3d33;--ink:#2b2622;--muted:#6d625a;--line:#e6d7c2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",Arial,sans-serif;color:var(--ink);font-size:10.5pt;line-height:1.55;background:#ddd}
+.page{width:210mm;height:297mm;background:var(--cream);margin:0 auto;padding:18mm 18mm 16mm;position:relative;overflow:hidden;page-break-after:always}
+.page:last-child{page-break-after:auto}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--forest);font-weight:600;line-height:1.1}
+h2{font-size:24pt;margin-bottom:4mm}
+h3{font-size:14pt;margin-bottom:2mm}
+.num{display:inline-grid;place-items:center;width:9mm;height:9mm;border-radius:50%;background:var(--forest);color:#fff;font-family:"DM Sans";font-size:11pt;margin-right:3mm;vertical-align:middle}
+.eyebrow{font-size:8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:600}
+.muted{color:var(--muted)}
+.hdr{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:5mm;margin-bottom:8mm}
+.logo b{font-family:"Cormorant Garamond";font-size:18pt;color:var(--rose-deep);font-weight:600;display:block;line-height:1}
+.logo small{font-size:6.5pt;letter-spacing:.26em;color:var(--muted)}
+.foot{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted);border-top:1px solid var(--line);padding-top:3mm}
+.motif{position:absolute;width:90mm;height:90mm;border-radius:50%;opacity:.55;
+ background-image:radial-gradient(circle at 25% 25%, rgba(184,80,92,.45) 0 6px, transparent 7px),radial-gradient(circle at 75% 75%, rgba(127,154,130,.55) 0 6px, transparent 7px),radial-gradient(circle at 75% 25%, transparent 0 10px, rgba(184,147,90,.45) 11px 12px, transparent 13px);background-size:36px 36px}
+
+/* cover */
+.cover{background:var(--forest);color:#e9e1d3;display:flex;flex-direction:column;justify-content:space-between}
+.cover .logo b{color:#f0c9c3;font-size:26pt}.cover .logo small{color:#a9b5a8}
+.cover h1{color:#fff;font-size:46pt;margin:6mm 0}
+.cover h1 em{color:#f0c9c3}
+.cover .eyebrow{color:#e7b9b2}
+.cover-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;border-top:1px solid rgba(255,255,255,.18);padding-top:6mm}
+.cover-meta b{display:block;color:#fff;font-size:11pt}
+.cover-meta span{font-size:8.5pt;color:#a9b5a8;text-transform:uppercase;letter-spacing:.14em}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:4mm;padding:5mm 6mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+ul.tick{list-style:none;display:grid;gap:1.6mm}
+ul.tick li{padding-left:5mm;position:relative}
+ul.tick li::before{content:"";position:absolute;left:0;top:1.6mm;width:2.6mm;height:1.4mm;border-left:1.6px solid var(--sage);border-bottom:1.6px solid var(--sage);transform:rotate(-45deg)}
+.badge{display:inline-block;font-size:7.5pt;font-weight:600;letter-spacing:.1em;padding:1mm 2.5mm;border-radius:99px;background:var(--rose-soft);color:var(--rose-deep);text-transform:uppercase}
+
+table{width:100%;border-collapse:collapse;font-size:10pt}
+th{background:var(--forest);color:#fff;text-align:left;padding:2.6mm 3mm;font-weight:500}
+td{padding:2.6mm 3mm;border-bottom:1px solid var(--line);vertical-align:top;background:var(--paper)}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr.total td{background:var(--rose-soft);font-weight:600;font-size:11.5pt;color:var(--rose-deep)}
+
+.timeline{display:grid;gap:2.5mm}
+.tl{display:grid;grid-template-columns:24mm 1fr;gap:4mm;align-items:start}
+.tl .d{background:var(--sage-soft);color:var(--forest);border-radius:2mm;padding:1.5mm 2mm;font-weight:600;font-size:9pt;text-align:center}
+
+.shot{border-radius:3mm;overflow:hidden;border:1px solid var(--line);background:#fff}
+.shot img{width:100%;display:block}
+.sitemap{display:flex;flex-direction:column;align-items:center;gap:4mm}
+.sm-root{background:var(--forest);color:#fff;padding:2.5mm 8mm;border-radius:99px;font-weight:600}
+.sm-row{display:grid;grid-template-columns:repeat(6,1fr);gap:2.5mm;width:100%}
+.sm-node{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--rose);border-radius:2mm;padding:2.5mm;font-size:8.5pt}
+.sm-node b{display:block;color:var(--forest);font-size:9.5pt;margin-bottom:1mm}
+.fill{background:#fff5d6;border-bottom:1px dashed #b8935a;padding:0 1mm}
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<div class="page cover">
+  <div class="motif" style="right:-25mm;top:-20mm;opacity:.25"></div>
+  <div class="motif" style="left:-35mm;bottom:40mm;opacity:.18"></div>
+  <div class="logo"><b>Nyonya Kain</b><small>HERITAGE TEXTILES FOR MODERN LIVING</small></div>
+  <div>
+    <span class="eyebrow">Proposal &amp; Fixed-Price Quotation</span>
+    <h1>Website Cleanup,<br>Optimisation <em>&amp;</em> Handover</h1>
+    <p style="max-width:130mm;font-size:12pt;color:#d6cfc2">A focused plan to organise, improve and stabilise nyonyakain.com on the existing WordPress + WooCommerce setup, so the owner can confidently manage routine updates.</p>
+  </div>
+  <div class="cover-meta">
+    <div><span>Prepared for</span><b>Nyonya Kain</b></div>
+    <div><span>Prepared by</span><b class="fill" style="color:#222">[Your name / company]</b></div>
+    <div><span>Date</span><b>November 2026</b></div>
+  </div>
+</div>
+
+<!-- 2. UNDERSTANDING + APPROACH -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">01 · Overview</span></div>
+  <h2><span class="num">1</span>Our understanding</h2>
+  <p style="margin-bottom:5mm">Nyonya Kain needs a <b>cleanup and organisation</b> of its existing website, not a full rebuild. The goal is a site that is tidy, easy to navigate, works properly on desktop and mobile, and is handed over with clear documentation so the owner can update products, pages and articles independently.</p>
+  <div class="grid3" style="margin-bottom:8mm">
+    <div class="card"><span class="eyebrow">Website</span><h3 style="margin-top:2mm">nyonyakain.com</h3><p class="muted">Existing live site</p></div>
+    <div class="card"><span class="eyebrow">Platform</span><h3 style="margin-top:2mm">WordPress + WooCommerce</h3><p class="muted">Existing theme retained</p></div>
+    <div class="card"><span class="eyebrow">Hosting</span><h3 style="margin-top:2mm">Hostinger</h3><p class="muted">Current provider, no migration</p></div>
+  </div>
+
+  <h2><span class="num">2</span>Approach</h2>
+  <div class="grid2">
+    <div class="card"><h3>Safety first</h3><ul class="tick"><li>Full backup of files and database before any change</li><li>Changes tested on a staging copy where practical</li><li>Approval requested before deleting content or touching checkout</li></ul></div>
+    <div class="card"><h3>Keep what works</h3><ul class="tick"><li>Existing theme, orders, customers and URLs preserved</li><li>Any change that may affect SEO flagged in advance</li><li>Product data kept intact unless change approved</li></ul></div>
+    <div class="card"><h3>Owner in control</h3><ul class="tick"><li>Ownership of domain, hosting and licences confirmed</li><li>All access and credentials documented</li><li>Owner trained to run routine updates</li></ul></div>
+    <div class="card"><h3>Clear communication</h3><ul class="tick"><li>Audit findings shared before work begins</li><li>Change log kept throughout the project</li><li>Out-of-scope items priced separately, in writing</li></ul></div>
+  </div>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 2</span></div>
+</div>
+
+<!-- 3. SCOPE A–C -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">02 · Scope of work</span></div>
+  <h2><span class="num">3</span>Proposed tasks</h2>
+  <div style="display:grid;gap:4mm">
+    <div class="card"><span class="badge">A</span> <h3 style="display:inline;margin-left:2mm">Initial Technical Audit &amp; Access Review</h3>
+      <ul class="tick" style="margin-top:3mm"><li>Review WordPress, WooCommerce, hosting, domain, DNS, SSL and plugins</li><li>Identify access, ownership, renewal or technical issues (Hostinger &amp; domain)</li><li>List themes, plugins and paid licences in use</li><li>Written summary of current status, limitations, extra costs and recommended next steps, <b>before</b> work begins</li></ul></div>
+    <div class="card"><span class="badge">B</span> <h3 style="display:inline;margin-left:2mm">Website Backup &amp; Safe Working Process</h3>
+      <ul class="tick" style="margin-top:3mm"><li>Full backup (files + database) before any change; downloadable copy for the owner</li><li>Staging/test environment via Hostinger where available</li><li>Preserve content, orders, customer info, URLs and configuration</li><li>Written approval before deleting content or changing live orders/checkout</li></ul></div>
+    <div class="card"><span class="badge">C</span> <h3 style="display:inline;margin-left:2mm">Product &amp; Image Organisation</h3>
+      <ul class="tick" style="margin-top:3mm"><li>Clean up <b>up to 20</b> existing WooCommerce product listings</li><li>Organise categories, titles, images and galleries</li><li>Remove/correct duplicate, incorrect or poorly sized images (replacements supplied by owner)</li><li>Check descriptions, prices, variations and key information; compress images for faster loading</li></ul></div>
+  </div>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 3</span></div>
+</div>
+
+<!-- 4. SCOPE D (with sitemap + mockup) -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">02 · Scope of work</span></div>
+  <div class="card" style="margin-bottom:5mm"><span class="badge">D</span> <h3 style="display:inline;margin-left:2mm">Website Navigation &amp; Content Organisation</h3>
+    <p class="muted" style="margin-top:2mm">Restructure navigation using the current theme so key information is easier to find. Proposed sitemap:</p>
+  </div>
+  <div class="sitemap" style="margin-bottom:6mm">
+    <div class="sm-root">Home</div>
+    <div class="sm-row">
+      <div class="sm-node"><b>Shop</b>Organised catalogue &amp; categories</div>
+      <div class="sm-node"><b>Corporate Gifting</b>Custom orders &amp; enquiry form</div>
+      <div class="sm-node"><b>Become a Reseller</b>Programme, eligibility, how to apply</div>
+      <div class="sm-node"><b>About</b>Brand story, values</div>
+      <div class="sm-node"><b>Founder, Press &amp; Media</b>Interviews, articles, talks</div>
+      <div class="sm-node"><b>Contact</b>WhatsApp, email, social</div>
+    </div>
+  </div>
+  <p class="eyebrow" style="margin-bottom:2mm">Homepage direction (refresh within existing theme)</p>
+  <div class="shot"><img src="pdf/_home-thumb.png" alt="Homepage mockup"></div>
+  <p class="muted" style="font-size:8.5pt;margin-top:2mm">Illustrative only. Final layout follows the current theme’s capabilities; real images and copy are taken from the existing site.</p>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 4</span></div>
+</div>
+
+<!-- 5. SCOPE E–F -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">02 · Scope of work</span></div>
+  <div style="display:grid;gap:4mm">
+    <div class="card"><span class="badge">E</span> <h3 style="display:inline;margin-left:2mm">Functionality &amp; Usability Checks</h3>
+      <ul class="tick" style="margin-top:3mm"><li>Desktop and mobile testing of navigation, menus, links and images</li><li>Contact links, WhatsApp buttons and enquiry forms verified</li><li>Product pages, cart and checkout tested (safe test method if store is active)</li><li>Corporate gifting and reseller enquiry pathways tested end to end</li><li>Broken links, display issues and technical errors fixed or reported</li><li>Existing URLs preserved; any SEO-affecting change flagged</li></ul></div>
+    <div class="card"><span class="badge">F</span> <h3 style="display:inline;margin-left:2mm">Training, Documentation &amp; Handover</h3>
+      <div class="grid2" style="margin-top:3mm">
+        <ul class="tick"><li>60–90 minute live screen-shared training</li><li>Recording of the session for future reference</li><li>Simple written guide: add/edit products, replace images, update pages, publish articles</li><li>Guidance on backups, routine updates and when to get professional help</li></ul>
+        <ul class="tick"><li>Summary of hosting, domain, plugin &amp; licence arrangements incl. renewals and costs</li><li>Change log, outstanding issues and recommended next steps</li><li>Confirmation owner controls website, domain, hosting, content, backups and accounts</li><li><b>14-day</b> post-handover period to fix defects from agreed work</li></ul>
+      </div></div>
+    <div class="card" style="background:var(--rose-soft);border-color:#e3bfbb"><h3>Exclusions</h3>
+      <p>Complete redesign, custom theme development, custom reseller login portal, inventory or CRM integrations, extensive copywriting, professional photography, major data recovery, complex migration, paid plugins/software subscriptions, and complicated ownership recovery. Any work outside the agreed scope will be identified, priced and approved in writing before it begins.</p></div>
+  </div>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 5</span></div>
+</div>
+
+<!-- 6. QUOTATION -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">03 · Quotation</span></div>
+  <h2><span class="num">4</span>Fixed-price quotation</h2>
+  <table style="margin-bottom:6mm">
+    <tr><th style="width:10mm">#</th><th>Task</th><th class="r">Est. hours</th><th class="r">Amount (RM)</th></tr>
+    <tr><td>A</td><td>Technical audit &amp; access review, with written report</td><td class="r">3</td><td class="r">100</td></tr>
+    <tr><td>B</td><td>Full backup, staging setup &amp; safe working process</td><td class="r">2</td><td class="r">80</td></tr>
+    <tr><td>C</td><td>Product &amp; image organisation (up to 20 products)</td><td class="r">8</td><td class="r">270</td></tr>
+    <tr><td>D</td><td>Navigation &amp; content organisation (7 key pages/sections)</td><td class="r">6</td><td class="r">200</td></tr>
+    <tr><td>E</td><td>Functionality &amp; usability checks (desktop + mobile)</td><td class="r">3</td><td class="r">100</td></tr>
+    <tr><td>F</td><td>Training (60–90 min, recorded), written guide &amp; handover pack</td><td class="r">5</td><td class="r">200</td></tr>
+    <tr class="total"><td></td><td>Total fixed price</td><td class="r">27</td><td class="r">RM 950</td></tr>
+  </table>
+  <div class="grid2">
+    <div>
+      <h3>Estimated timeline: 10–14 working days</h3>
+      <div class="timeline" style="margin-top:3mm">
+        <div class="tl"><span class="d">Day 1–2</span><span>Access, audit report &amp; full backup (A, B)</span></div>
+        <div class="tl"><span class="d">Day 3–7</span><span>Products, images, navigation &amp; pages (C, D)</span></div>
+        <div class="tl"><span class="d">Day 8–9</span><span>Testing &amp; fixes (E), client review</span></div>
+        <div class="tl"><span class="d">Day 10–12</span><span>Revisions, documentation &amp; training (F)</span></div>
+        <div class="tl"><span class="d">+14 days</span><span>Post-handover defect support</span></div>
+      </div>
+    </div>
+    <div>
+      <h3>Payment milestones</h3>
+      <table style="margin-top:3mm">
+        <tr><td>50% deposit on acceptance</td><td class="r">RM 475</td></tr>
+        <tr><td>50% on completion &amp; training</td><td class="r">RM 475</td></tr>
+      </table>
+      <p class="muted" style="font-size:9pt;margin-top:3mm">Price excludes third-party costs (domain/hosting renewals, paid plugins, licences), which are paid directly by the owner.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 6</span></div>
+</div>
+
+<!-- 7. DELIVERABLES + ABOUT + NEXT STEPS -->
+<div class="page">
+  <div class="hdr"><div class="logo"><b>Nyonya Kain</b><small>PROPOSAL &amp; QUOTATION</small></div><span class="muted">04 · Completion</span></div>
+  <h2><span class="num">5</span>Completion criteria</h2>
+  <div class="card" style="margin-bottom:6mm"><ul class="tick">
+    <li>Agreed website and product cleanup completed</li><li>Content pages and navigation in place</li><li>Functionality checks passed on desktop and mobile</li><li>Backup and handover documentation provided</li><li>Training session completed and recording supplied</li><li>Outstanding issues and account matters documented</li><li>Owner can manage routine updates independently</li></ul></div>
+
+  <h2><span class="num">6</span>About us</h2>
+  <div class="grid2" style="margin-bottom:6mm">
+    <div class="card"><h3>Experience</h3><p><span class="fill">[Years of WordPress &amp; WooCommerce experience, short bio]</span></p></div>
+    <div class="card"><h3>Relevant work</h3><p><span class="fill">[2–3 WordPress / WooCommerce sites with links]</span></p></div>
+  </div>
+
+  <h2><span class="num">7</span>What we need to start</h2>
+  <div class="card" style="margin-bottom:6mm"><ul class="tick">
+    <li>WordPress admin access (Administrator)</li><li>Hostinger account access, or a delegated/collaborator login</li><li>Domain registrar access (or confirmation of who holds it)</li><li>Replacement images and any updated product information</li><li>Brand story, founder bio and list of media features / press links</li></ul></div>
+
+  <div class="card" style="background:var(--forest);color:#e9e1d3;border:0">
+    <h3 style="color:#fff">Acceptance</h3>
+    <p>This quotation is valid for 30 days. To proceed, reply to confirm and the deposit invoice will be issued.</p>
+    <div class="grid2" style="margin-top:6mm"><div>Client signature: ____________________</div><div>Date: ____________</div></div>
+  </div>
+  <div class="foot"><span>Nyonya Kain · Website Cleanup, Optimisation &amp; Handover</span><span>Page 7</span></div>
+</div>
+
+</body>
+</html>
